@@ -163,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({
 
         <IconButton
           aria-label="Menu"
-          icon={<CgMenuGridR size="lg" color="black" />}
+          icon={<CgMenuGridR size="lg" color="white" />}
           transition="all 0.1s"
           size={{ base: "md", lg: "lg" }}
           onClick={onOpen}
@@ -180,7 +180,7 @@ const Header: React.FC<HeaderProps> = ({
         >
           <DrawerOverlay />
           <DrawerContent bg={bgIm} textColor={"white"}>
-            <DrawerHeader bgImg={isCustomUsername && address ? profiles?.banner : "/Logo.png"} bgSize={{ base: "cover", lg: "100% 100%" }} p={2}>
+            <DrawerHeader bgImg={isCustomUsername && address ? profiles?.banner : "/LibsDedicated.png"} bgSize={{ base: "cover", lg: "100% 100%" }} p={2}>
               <HStack justifyContent="space-between" p={1}>
                 <HStack>
                   <Button variant="primary" size="sm" as={"a"} href={"/"}>
@@ -198,7 +198,7 @@ const Header: React.FC<HeaderProps> = ({
               <HStack p={4}>
                 <Stack direction={isCustomUsername && address ? "column" : "row"}>
                   <Link href={"/Profile/MyProfile"} >
-                    <Image onClick={onClose} src={isCustomUsername && address ? profiles?.profilePicture : "/Logo.png"} h={"50px"} w={"50px"} borderRadius="3xl" />
+                    <Image onClick={onClose} src={isCustomUsername && address ? profiles?.profilePicture : "/Tokens/SteakhouseLogo.png"} h={"50px"} w={"50px"} borderRadius="3xl" />
                   </Link>
                   <Stack>
                     {isCustomUsername && address ? (
@@ -217,7 +217,7 @@ const Header: React.FC<HeaderProps> = ({
                       loginOptional: false,
                     }}
                     dropdownPosition={{ side: "bottom", align: "start" }}
-                    btnTitle="Connect To Dragon Warriors"
+                    btnTitle="Connect To The Steakhouse"
                     modalTitle="Choose a wallet to begin"
                     detailsBtn={() => {
                       return <Button

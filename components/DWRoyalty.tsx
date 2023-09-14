@@ -26,17 +26,17 @@ export default function DWRoyalties() {
     const { contract: royaltyContract } = useContract(DW_Royalties, royaltiesAbi);
     const address = useAddress();
 
-    const { contract: CowzContract } = useContract(D_W_AD, DW_ABI);
+    const { contract: DW_Contract } = useContract(D_W_AD, DW_ABI);
 
     const [selectedNFTs, setSelectedNFTs] = useState<string[]>([]);
     const [selectAll, setSelectAll] = useState(false);
 
-    const { data: ownedNFTs } = useOwnedNFTs(CowzContract, address);
+    const { data: ownedNFTs } = useOwnedNFTs(DW_Contract, address);
     const { data: royaltyContractDistributed, isLoading: isLoadingroyaltyContractDistributed, error: royaltyroyaltyContractDistributed } = useContractRead(royaltyContract, "totalReleased");
 
     const { data: royaltyContractDistributedUser, isLoading: isLoadingroyaltyContractDistributedUser, error: royaltyroyaltyContractDistributedUser } = useContractRead(royaltyContract, "released", [address]);
     const { data: royaltyContractBalance, isLoading: isLoadingroyaltyContractBalance, error: royaltyContractBalanceError } = useContractRead(royaltyContract, "getContractBalance");
-    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "myMultiPayout", [formatSelectedNFTs2()])
+    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPayout", [formatSelectedNFTs2()])
     const formattedTotalOwed = totalOwed ? parseFloat((totalOwed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
 
     const formattedTotalBalance = royaltyContractBalance ? parseFloat((royaltyContractBalance / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';

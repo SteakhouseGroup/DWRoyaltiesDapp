@@ -1,7 +1,6 @@
 import { Button, Text, SimpleGrid, Heading, Flex, Divider, Collapse, VStack, Box } from "@chakra-ui/react";
 import { useAddress, useContract, useOwnedNFTs, ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { useState } from "react";
-import { objectOutputType, ZodNullable, ZodOptional, ZodUnion, ZodString, ZodNumber, ZodEffects, ZodArray, ZodObject, ZodBigInt, ZodType, ZodTypeDef, ZodUnknown, objectInputType } from "zod";
 import { BigNumber } from "ethers";
 import React from "react";
 import { D_W__B_AD } from "../consts/Addresses";
@@ -30,7 +29,7 @@ export default function DWBViewer() {
   return (
     <Box>
       <SimpleGrid columns={{ base: 2, lg: 5 }} justifyContent="center" m="auto" spacing={2} p={4}>
-        {ownedNFTIds?.map((nft: { metadata: objectOutputType<{ name: ZodNullable<ZodOptional<ZodUnion<[ZodString, ZodNumber]>>>; description: ZodNullable<ZodOptional<ZodNullable<ZodString>>>; background_color: ZodNullable<ZodOptional<ZodUnion<[ZodString, ZodEffects<ZodString, string, string>, ZodString]>>>; properties: ZodNullable<ZodOptional<ZodUnion<[ZodArray<ZodObject<{}, "strip", ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, objectOutputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">, objectInputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">>, "many">, ZodObject<{}, "strip", ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, objectOutputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">, objectInputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">>]>>>; attributes: ZodNullable<ZodOptional<ZodUnion<[ZodArray<ZodObject<{}, "strip", ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, objectOutputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">, objectInputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">>, "many">, ZodObject<{}, "strip", ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, objectOutputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">, objectInputType<{}, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">>]>>>; id: ZodString; uri: ZodString; image: ZodOptional<ZodNullable<ZodString>>; external_url: ZodOptional<ZodNullable<ZodString>>; animation_url: ZodOptional<ZodNullable<ZodString>>; }, ZodUnion<[ZodEffects<ZodUnion<[ZodBigInt, ZodType<BigNumber, ZodTypeDef, BigNumber>, ZodType<import("bn.js"), ZodTypeDef, import("bn.js")>]>, string, bigint | BigNumber | import("bn.js")>, ZodUnknown]>, "strip">; }) => (
+      {ownedNFTIds?.map((nft) => (
           <VStack bg="meat4" key={nft.metadata.id.toString()} p={4} borderRadius="md"
           >
 
@@ -57,7 +56,7 @@ export default function DWBViewer() {
                 <div>
                   <SimpleGrid h={4} />
 
-                  {nft.metadata.attributes.map((attribute, index) => (
+                  {nft.metadata.attributes.map((attribute: { [s: string]: unknown; } | ArrayLike<unknown>, index: React.Key | null | undefined) => (
                     <div key={index}>
                       {Object.entries(attribute).map(([key, value]) => (
                         <div key={key}>

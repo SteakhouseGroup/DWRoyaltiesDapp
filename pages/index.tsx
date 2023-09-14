@@ -1,5 +1,6 @@
 import { NextPage } from "next";
-import { Heading, VStack, Text, Image, SimpleGrid, Divider } from "@chakra-ui/react";
+import { Heading, VStack, Text, Image, SimpleGrid, Divider, Stack, Button, Link } from "@chakra-ui/react";
+import {MdOutlineOpenInNew} from "react-icons/md"
 
 const Home: NextPage = () => {
   return (
@@ -7,15 +8,37 @@ const Home: NextPage = () => {
       <Heading>Welcome to Dragon Warriors!</Heading>
       <Text>Claim royalties today for either of our collections</Text>
       <Divider />
-      <SimpleGrid columns={{base:2, lg:5}} m="auto" spacing="2">
-      <Image src="/DragonWarrior1.jpeg" height="70px"  width="70px" borderRadius="md"/>
-      <Image src="/DragonWarrior2.jpeg" height="70px"  width="70px" borderRadius="md"/>
+      <Stack direction={{base:"column", lg: "row"}} textAlign={"center"} spacing={4} textColor={"white"}>
+
+        <VStack bg={"dw4"} p={4} borderRadius={"md"}>
+          <Text>
+            Click here to claim CRO for<br/>  holding Dragon Warriors!
+          </Text>
+          <Button as={Link} textColor="white"  bg="dw2" size="lg" href="/DragonWarriors" rightIcon={<MdOutlineOpenInNew />} >
+              Go there now
+            </Button>
+        </VStack>
+
+        <VStack bg={"dw4"} p={4} borderRadius={"md"}>
+          <Text>
+            Click here to claim CRO for<br/> holding Dragon Boosters!
+          </Text>
+          <Button as={Link} href="/DragonWarriorsBoost" bg="dw2" size="lg" textColor="white" rightIcon={<MdOutlineOpenInNew />} >
+              Go there now
+            </Button>
+        </VStack>
+      </Stack>
+      <SimpleGrid columns={{base:2, lg:4}} m="auto" spacing="2" mt="0">
+
+      <Image src="/images/DragonWarrior1.jpeg" height="150px"  width="150px" borderRadius="md"/>
+      <Image src="/images/DragonWarrior2.jpeg" height="150px"  width="150px" borderRadius="md"/>
+
+
+      <Image src="/images/DragonWarrior3.jpeg" height="150px"  width="150px" borderRadius="md"/>
+      <Image src="/images/DragonWarrior4.jpeg" height="150px"  width="150px" borderRadius="md"/>
+      </SimpleGrid>
       <Divider />
 
-      <Image src="/DragonWarrier3.jpeg" height="70px"  width="70px" borderRadius="md"/>
-      <Image src="/DragonWarrior4.jpeg" height="70px"  width="70px" borderRadius="md"/>
-      <Divider />
-      </SimpleGrid>
       </VStack>
   );
 };

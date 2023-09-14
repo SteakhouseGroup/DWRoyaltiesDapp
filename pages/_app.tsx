@@ -25,7 +25,7 @@ const injectedWalletConfig: WalletConfig<InjectedWallet> = {
   id: "injected-wallet",
   meta: {
     name: "DeFi Wallet",
-    iconURL: "/Defi.png",
+    iconURL: "/Tokens/Defi.png",
   },
   create: () => new InjectedWallet(),
   isInstalled: () => true, // Custom logic to check if the wallet is installed
