@@ -217,7 +217,7 @@ const Header: React.FC<HeaderProps> = ({
                       loginOptional: false,
                     }}
                     dropdownPosition={{ side: "bottom", align: "start" }}
-                    btnTitle="Connect To The Steakhouse"
+                    btnTitle="Connect To Dragon Warriors"
                     modalTitle="Choose a wallet to begin"
                     detailsBtn={() => {
                       return <Button
