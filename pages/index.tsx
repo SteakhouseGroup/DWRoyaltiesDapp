@@ -3,7 +3,7 @@ import { Heading, VStack, Text, Image, SimpleGrid, Divider } from "@chakra-ui/re
 
 const Home: NextPage = () => {
   return (
-    <VStack bg="dw2" h="100vh" textAlign={"center"} m="auto" justifyContent={"center"} p={4} textColour="dw2">
+    <VStack bg="dw2" h="100vh" textAlign={"center"} m="auto" justifyContent={"center"} p={4} textColor="dw2">
       <Heading>Welcome to Dragon Warriors!</Heading>
       <Text>Claim royalties today for either of our collections</Text>
       <Divider />
