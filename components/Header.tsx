@@ -198,7 +198,7 @@ const Header: React.FC<HeaderProps> = ({
               <HStack p={4}>
                 <Stack direction={isCustomUsername && address ? "column" : "row"}>
                   <Link href={"/Profile/MyProfile"} >
-                    <Image onClick={onClose} src={isCustomUsername && address ? profiles?.profilePicture : "/Tokens/SteakhouseLogo.png"} h={"50px"} w={"50px"} borderRadius="3xl" />
+                    <Image onClick={onClose} src={isCustomUsername && address ? profiles?.profilePicture : "/Logo.png"} h={"50px"} w={"50px"} borderRadius="3xl" />
                   </Link>
                   <Stack>
                     {isCustomUsername && address ? (
