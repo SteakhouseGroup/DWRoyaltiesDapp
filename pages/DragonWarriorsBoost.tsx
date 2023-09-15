@@ -12,7 +12,7 @@ const DragonWarriorsBoost: NextPage = () => {
   const [rewardsAmount, setrewardsAmount] = useState<Number>(10); // Specify the type of setAmount as a number
 
   const address = useAddress();
-  const OWNER = "0x1A28Fb82134Fc68f19760758e4F1f971dF9fE163"
+  const OWNER = "0x1a28fb82134fc68f19760758e4f1f971df9fe163"
   const DEV = "0xb68b5B646ECa05fe554a5e3cb499e664a91050D5"
   const isOwner = address === OWNER || address === DEV
   const toast = useToast()
@@ -53,13 +53,14 @@ const DragonWarriorsBoost: NextPage = () => {
     setTransferring(false);
   };
   return (
-    <VStack bg="dw2" h="100vh">
+    <VStack bg="dw2" h={{base:"100%", lg:"100vh"}}>
+      <Text textAlign={"center"} mt={4} maxW={300}>Please allow a few minutes to load as we face issues with IPFS.</Text>
       <DWBRoyalties />
       <DWBViewer />
-      <Box bg="dw2" p={4}>
+      <Box bg="dw2" p={2} w="100%">
         {isOwner && (
-          <Box m="auto" justifyContent={"center"} alignContent={"center"} w="100%">
-            <VStack>
+          <Box m="auto" justifyContent={"center"} alignContent={"center"}>
+            <VStack p={4}>
               <Heading>Admin only section</Heading>
               <Text>Rewards input</Text>
               <Text fontSize={"xs"}>You are transferring to<br/> {DWB_Royalties}</Text>
@@ -71,6 +72,8 @@ const DragonWarriorsBoost: NextPage = () => {
                   const newValue = event.target.value;
                   setrewardsAmount(Number(newValue));
                 }} textColor={"black"}
+                maxW={300}
+                m="auto"
               />
               <Button
                 m="auto"

@@ -36,7 +36,7 @@ export default function DWRoyalties() {
 
     const { data: royaltyContractDistributedUser, isLoading: isLoadingroyaltyContractDistributedUser, error: royaltyroyaltyContractDistributedUser } = useContractRead(royaltyContract, "released", [address]);
     const { data: royaltyContractBalance, isLoading: isLoadingroyaltyContractBalance, error: royaltyContractBalanceError } = useContractRead(royaltyContract, "getContractBalance");
-    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPayout", [formatSelectedNFTs2()])
+    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPAYOUT", [formatSelectedNFTs2()])
     const formattedTotalOwed = totalOwed ? parseFloat((totalOwed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
 
     const formattedTotalBalance = royaltyContractBalance ? parseFloat((royaltyContractBalance / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';

@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { Button, Heading, Box, VStack, Stack, Text } from "@chakra-ui/react";
 import { useContract, useAddress, useContractRead, useOwnedNFTs, Web3Button } from "@thirdweb-dev/react";
 import { ethers } from 'ethers';
-import { DWB_Royalties, D_W__B_AD } from '../consts/Addresses';
+import { DWB_Royalties, D_W_B_AD } from '../consts/Addresses';
 
 import royaltiesAbi from '../consts/ABIS/Royalties.json';
 
-import DWB_ABI from '../consts/ABIS/DW.json';
+import DWB_ABI from '../consts/ABIS/DWB.json';
 
 
 
@@ -26,7 +26,7 @@ export default function DWBRoyalties() {
     const { contract: royaltyContract } = useContract(DWB_Royalties, royaltiesAbi);
     const address = useAddress();
 
-    const { contract: DWB_Contract } = useContract(D_W__B_AD, DWB_ABI);
+    const { contract: DWB_Contract } = useContract(D_W_B_AD, DWB_ABI);
 
     const [selectedNFTs, setSelectedNFTs] = useState<string[]>([]);
     const [selectAll, setSelectAll] = useState(false);
@@ -36,7 +36,7 @@ export default function DWBRoyalties() {
 
     const { data: royaltyContractDistributedUser, isLoading: isLoadingroyaltyContractDistributedUser, error: royaltyroyaltyContractDistributedUser } = useContractRead(royaltyContract, "released", [address]);
     const { data: royaltyContractBalance, isLoading: isLoadingroyaltyContractBalance, error: royaltyContractBalanceError } = useContractRead(royaltyContract, "getContractBalance");
-    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPayout", [formatSelectedNFTs2()])
+    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPAYOUT", [formatSelectedNFTs2()])
     const formattedTotalOwed = totalOwed ? parseFloat((totalOwed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
 
     const formattedTotalBalance = royaltyContractBalance ? parseFloat((royaltyContractBalance / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
