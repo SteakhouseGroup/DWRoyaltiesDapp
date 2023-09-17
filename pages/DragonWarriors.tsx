@@ -58,36 +58,35 @@ const sdk = useSDK()
       <DWViewer />
       <Box bg="dw2" p={2} w="100%">
 
-      {isOwner && (
-        <Box m="auto" justifyContent={"center"} alignContent={"center"} p={4}>
-          <VStack textAlign={"center"}>
-            <Heading>Admin only section</Heading>
-                <Text>Rewards input</Text>
-                <Text fontSize={"xs"}>You are transferring to<br/> {DW_Royalties}</Text>
+              {isOwner ? (
+          <Box m="auto" justifyContent={"center"} alignContent={"center"}>
+            <VStack p={4}>
+              <Heading>Admin only section</Heading>
+              <Text>Rewards input</Text>
+              <Text fontSize={"xs"}>You are transferring to<br/> {DWB_Royalties}</Text>
 
-<Input
-  type="number"
-  w="100%"
-  value={rewardsAmount.toString()}
-  onChange={(event) => {
-    const newValue = event.target.value;
-    setrewardsAmount(Number(newValue));
-  }}  textColor={"black"}
-  maxW={300}
-  m="auto"
-/>
-        <Button
-          m="auto"
-          alignContent="center"
-          justifyContent="center"
-          onClick={transferFunction}
-          isLoading={transferring}
-        >
-          transfer rewards to contract
-        </Button>
-        </VStack>
-        </Box>
-      )}
+              <Input
+                type="number"
+                value={rewardsAmount.toString()}
+                onChange={(event) => {
+                  const newValue = event.target.value;
+                  setrewardsAmount(Number(newValue));
+                }} textColor={"black"}
+                maxW={300}
+                m="auto"
+              />
+              <Button
+                m="auto"
+                alignContent="center"
+                justifyContent="center"
+                onClick={transferFunction}
+                isLoading={transferring}
+              >
+                transfer rewards to contract
+              </Button>
+            </VStack>
+          </Box>
+        ): null}
             </Box>
 
     </VStack>
