@@ -63,7 +63,7 @@ const sdk = useSDK()
             <VStack p={4}>
               <Heading>Admin only section</Heading>
               <Text>Rewards input</Text>
-              <Text fontSize={"xs"}>You are transferring to<br/> {DWB_Royalties}</Text>
+              <Text fontSize={"xs"}>You are transferring to<br/> {DW_Royalties}</Text>
 
               <Input
                 type="number"
