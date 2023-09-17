@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         name: "Dragon Warriors",
         description: "Welcome to The Dragon Warriors Claim Dapp, home of the Chefz, STEAK and more!",
         logoUrl: "/Logo.png",
-        url: "https://www.dragonwarriors.netlify.app",
+        url: "https://www.dragonwarriorscro.netlify.app",
         isDarkMode: true,
       }}
       autoConnect={true}
