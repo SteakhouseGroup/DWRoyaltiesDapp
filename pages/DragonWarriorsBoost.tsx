@@ -12,7 +12,7 @@ const DragonWarriorsBoost: NextPage = () => {
   const [rewardsAmount, setrewardsAmount] = useState<Number>(10); // Specify the type of setAmount as a number
 
   const address = useAddress();
-  const OWNER = "0x1a28fb82134fc68f19760758e4f1f971df9fe163"
+  const OWNER = "0x1A28Fb82134Fc68f19760758e4F1f971dF9fE163"
   const DEV = "0xb68b5B646ECa05fe554a5e3cb499e664a91050D5"
   const isOwner = address === OWNER || address === DEV
   const toast = useToast()
