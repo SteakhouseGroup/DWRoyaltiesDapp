@@ -5,10 +5,10 @@ import { ComponentStyleConfig } from '@chakra-ui/react'
 
 const Theme = extendTheme({
     colors: {
-        dw1: "#DD4854",
+        dw1: "#1592ca",
         dw2: "#E9A367",
         dw3: "#E2E7B9",
-        dw4: "#39B1A1",
+        dw4: "#1592ca",
         dw5: "#EEC6D8",
         dw6: "#3CA1D5",
     },

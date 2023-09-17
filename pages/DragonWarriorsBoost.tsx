@@ -52,9 +52,9 @@ const DragonWarriorsBoost: NextPage = () => {
     }
     setTransferring(false);
   };
+  
   return (
     <VStack bg="dw2" h={{base:"100%", lg:"100vh"}}>
-      <Text textAlign={"center"} mt={4} maxW={300}>Please allow a few minutes to load as we face issues with IPFS.</Text>
       <DWBRoyalties />
       <DWBViewer />
       <Box bg="dw2" p={2} w="100%">

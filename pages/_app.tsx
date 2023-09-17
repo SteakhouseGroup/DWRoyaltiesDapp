@@ -8,7 +8,6 @@ import {
   walletConnect,
   coinbaseWallet,
 
-
 } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import { Base, Cronos, Ethereum, Polygon } from "@thirdweb-dev/chains";
@@ -20,12 +19,11 @@ import Theme from "../utils/Theme";
 // This is the chain your dApp will work on.
 // Change this to the chain your app is built for.
 // You can also import additional chains from `@thirdweb-dev/chains` and pass them directly.
-const activeChain = "ethereum";
 const injectedWalletConfig: WalletConfig<InjectedWallet> = {
   id: "injected-wallet",
   meta: {
     name: "DeFi Wallet",
-    iconURL: "/Tokens/Defi.png",
+    iconURL: "/Defi.png",
   },
   create: () => new InjectedWallet(),
   isInstalled: () => true, // Custom logic to check if the wallet is installed
@@ -69,13 +67,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       autoConnect={true}
 
     >
-              <Head>
-          <title>Dragon Warriors</title>
-        </Head>
-        <ChakraProvider theme={Theme}>
+      <Head>
+        <title>Dragon Warriors</title>
+      </Head>
+      <ChakraProvider theme={Theme}>
 
-        <Header heading={"Dragon Warriors"} bgIm={"#39B1A1"} />
-      <Component {...pageProps} />
+        <Header heading={"Dragon Warriors"} bgIm={"#1592ca"} />
+        <Component {...pageProps} />
       </ChakraProvider>
 
     </ThirdwebProvider>

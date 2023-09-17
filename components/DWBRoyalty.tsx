@@ -31,34 +31,55 @@ export default function DWBRoyalties() {
     const [selectedNFTs, setSelectedNFTs] = useState<string[]>([]);
     const [selectAll, setSelectAll] = useState(false);
 
-    const { data: ownedNFTs } = useOwnedNFTs(DWB_Contract, address);
     const { data: royaltyContractDistributed, isLoading: isLoadingroyaltyContractDistributed, error: royaltyroyaltyContractDistributed } = useContractRead(royaltyContract, "totalReleased");
 
     const { data: royaltyContractDistributedUser, isLoading: isLoadingroyaltyContractDistributedUser, error: royaltyroyaltyContractDistributedUser } = useContractRead(royaltyContract, "released", [address]);
     const { data: royaltyContractBalance, isLoading: isLoadingroyaltyContractBalance, error: royaltyContractBalanceError } = useContractRead(royaltyContract, "getContractBalance");
-    const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPAYOUT", [formatSelectedNFTs2()])
-    const formattedTotalOwed = totalOwed ? parseFloat((totalOwed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
 
-    const formattedTotalBalance = royaltyContractBalance ? parseFloat((royaltyContractBalance / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
-    const formattedTotalDistributed = royaltyContractDistributed ? parseFloat((royaltyContractDistributed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
+    const [nftIds, setNftIds] = useState<string[]>([]);
 
-    function handleSelectAll() {
-        const allNFTs = ownedNFTs?.map((nft) => nft.metadata.id) ?? [];
-        setSelectedNFTs(allNFTs);
-        setSelectAll(true);
-    }
-
-    function formatSelectedNFTs2() {
-        return selectedNFTs.map((nft) => parseInt(nft, 10));
-    }
-
+    const options = { method: 'GET', headers: { accept: 'application/json', "eb-api-key": "x0WLHV5rpgnQ6Y8a3xM0", } };
+    const apiUrl = `https://api.ebisusbay.com/v2/wallets?wallet=${address}&collection=0x73cc8C969090441B0b3B880f2642A07eFB08D562&direction=asc&pageSize=100`;
+  
     useEffect(() => {
-        if (ownedNFTs) {
-            const allNFTs = ownedNFTs.map((nft) => nft.metadata.id);
-            setSelectedNFTs(allNFTs);
-            setSelectAll(true);
-        }
-    }, [ownedNFTs]);
+      if (address) {
+        fetchAllPages(apiUrl, options)
+      }
+    }, [address]);
+  
+    async function fetchAllPages(
+      url: string,
+      options: any,
+      currentPage: number = 1,
+      nftIds: string[] = []
+    ) {
+      const response = await fetch(`${url}&page=${currentPage}`, options);
+      const data = await response.json();
+      if (response.status !== 200) {
+        console.error(`Error fetching page ${currentPage}: ${data.error}`);
+        return nftIds;
+      }
+      const nftIdsOnPage = data.nfts.map((nft: any) => nft.nftId);
+      nftIds.push(...nftIdsOnPage);
+      if (currentPage < data.totalPages) {
+        return fetchAllPages(url, options, currentPage + 1, nftIds);
+      }
+      setNftIds(nftIds)
+      return nftIds;
+    }
+
+
+
+  
+      
+
+      const { data: totalOwed, isLoading: isLoadingTotalOwed } = useContractRead(royaltyContract, "mymultiPAYOUT", [nftIds])
+      const formattedTotalOwed = totalOwed ? parseFloat((totalOwed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
+
+      const formattedTotalBalance = royaltyContractBalance ? parseFloat((royaltyContractBalance / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
+      const formattedTotalDistributed = royaltyContractDistributed ? parseFloat((royaltyContractDistributed / 10 ** 18).toFixed(18)).toFixed(4) : 'N/A';
+  
+      const nftIdsAsNumbers = nftIds.map(id => parseInt(id, 10)); // Use parseInt with base 10
 
     return (
         <Box p={4}>
@@ -83,7 +104,7 @@ export default function DWBRoyalties() {
                         as={Web3Button}
                         contractAddress={DWB_Royalties}
                         action={(contract: { call: (arg0: string, arg1: (string | number[] | undefined)[]) => void; }) => {
-                            contract.call("multiRelease", [formatSelectedNFTs2(), address])
+                            contract.call("multiRelease", [nftIdsAsNumbers, address])
                         }}
                         variant="primary">
                         Claim
