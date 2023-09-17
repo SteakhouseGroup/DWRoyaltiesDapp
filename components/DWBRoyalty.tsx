@@ -52,7 +52,7 @@ export default function DWBRoyalties() {
       options: any,
       currentPage: number = 1,
       nftIds: string[] = []
-    ) {
+    ): Promise<string[]>  {
       const response = await fetch(`${url}&page=${currentPage}`, options);
       const data = await response.json();
       if (response.status !== 200) {
