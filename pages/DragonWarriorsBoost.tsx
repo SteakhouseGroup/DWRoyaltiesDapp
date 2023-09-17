@@ -58,7 +58,7 @@ const DragonWarriorsBoost: NextPage = () => {
       <DWBRoyalties />
       <DWBViewer />
       <Box bg="dw2" p={2} w="100%">
-        {isOwner && (
+                {isOwner ? (
           <Box m="auto" justifyContent={"center"} alignContent={"center"}>
             <VStack p={4}>
               <Heading>Admin only section</Heading>
@@ -86,7 +86,7 @@ const DragonWarriorsBoost: NextPage = () => {
               </Button>
             </VStack>
           </Box>
-        )}
+        ): null}
       </Box>
     </VStack>
   );
