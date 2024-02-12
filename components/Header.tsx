@@ -213,10 +213,7 @@ const Header: React.FC<HeaderProps> = ({
                   <Button
                     variant="primary" size="md"
                     as={ConnectWallet}
-                    auth={{
-                      loginOptional: false,
-                    }}
-                    dropdownPosition={{ side: "bottom", align: "start" }}
+
                     btnTitle="Connect To Dragon Warriors"
                     modalTitle="Choose a wallet to begin"
                     detailsBtn={() => {
